@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Targets Form</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th, td {
+      transition: background-color 0.3s;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    input[type="number"]:focus {
+      outline: none;
+      border: 2px solid dodgerblue;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Targets for Self Improvement and University Development (AY 2023 - 2024)</h2>
+
+<form id="targetsForm">
+  <table id="targetsTable">
+    <thead>
+      <tr>
+        <th rowspan="2">Sr. No.</th>
+        <th rowspan="2">Targets for Self Improvement and University Development (AY 2023 - 2024)</th>
+        <th rowspan="2">Targets</th>
+        <th colspan="3">Targets</th>
+        <th colspan="2">Targets Achieved</th>
+        <th rowspan="2">Total</th>
+      </tr>
+      <tr>
+        <th>Prof</th>
+        <th>Asso. Prof</th>
+        <th>Asst. Prof/ Sr. Asst. Prof.</th>
+        <th>SEM I</th>
+        <th>SEM II</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Example target 1</td>
+        <td>10</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="number" class="targetAchieved" name="target_achieved_sem1"></td>
+        <td><input type="number" class="targetAchieved" name="target_achieved_sem2"></td>
+        <td class="total">20</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Example target 2</td>
+        <td>15</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="number" class="targetAchieved" name="target_achieved_sem1"></td>
+        <td><input type="number" class="targetAchieved" name="target_achieved_sem2"></td>
+        <td class="total">30</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+  
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  const form = document.getElementById('targetsForm');
+
+  form.addEventListener('input', function(event) {
+    if (event.target.classList.contains('targetAchieved')) {
+      const row = event.target.closest('tr');
+      const targetSem1 = parseInt(row.querySelector('input[name="target_achieved_sem1"]').value) || 0;
+      const targetSem2 = parseInt(row.querySelector('input[name="target_achieved_sem2"]').value) || 0;
+      const total = targetSem1 + targetSem2;
+      row.querySelector('.total').textContent = total;
+    }
+  });
+</script>
+
+</body>
+</html>
